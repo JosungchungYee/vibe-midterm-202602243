@@ -21,7 +21,7 @@
 ## 3. 링크
 
 - GitHub 저장소: `https://github.com/hyejun2007/vibe-midterm-202602243`
-- GitHub Pages 배포: `https://hyejun2007.github.io/vibe-midterm-202602243/`
+- GitHub Pages 배포: `https://josungchungyee.github.io/vibe-midterm-202602243/`
 
 ## 4. 사용법
 
