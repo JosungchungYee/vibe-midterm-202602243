@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f1e8">
+    <title>온기 카페 | 메뉴 주문</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="온기 카페 홈">
+        <span class="brand-mark" aria-hidden="true">온</span>
+        <span>온기 카페</span>
+      </a>
+      <nav class="page-nav" aria-label="화면 전환">
+        <button class="nav-button is-active" type="button" data-view="menu" aria-pressed="true">
+          메뉴
+        </button>
+        <button class="nav-button" type="button" data-view="admin" aria-pressed="false">
+          관리자
+        </button>
+      </nav>
+      <p class="header-note">오늘도 따뜻한 한 잔</p>
+    </header>
+
+    <main class="page-shell">
+      <p class="app-error" id="app-error" role="alert" hidden></p>
+      <section class="kiosk-screen" id="menu-view" aria-labelledby="page-title">
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">COFFEE &amp; DRINKS</p>
+          <h1 id="page-title">메뉴 주문</h1>
+          <p>마음에 드는 음료와 옵션을 골라보세요.</p>
+          <button class="button cart-navigation" id="open-cart-button" type="button">
+            장바구니 <span id="cart-count">0</span>
+          </button>
+        </section>
+
+        <section aria-labelledby="menu-title">
+          <div class="section-heading">
+            <div>
+              <p class="step-label">1 · 메뉴 선택</p>
+              <p class="eyebrow">OUR MENU</p>
+              <h2 id="menu-title">음료 메뉴</h2>
+            </div>
+          </div>
+          <div class="menu-grid" id="menu-list" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <section class="kiosk-screen options-screen" id="options-view" aria-labelledby="options-title" hidden>
+        <button class="back-button" type="button" id="options-back-button">
+          <span aria-hidden="true">←</span> 메뉴로 돌아가기
+        </button>
+        <section class="intro">
+          <p class="step-label">2 · 옵션 선택</p>
+          <p class="eyebrow">CUSTOMIZE YOUR DRINK</p>
+          <h1 id="options-title">옵션 선택</h1>
+          <p id="options-menu-name"></p>
+        </section>
+        <section class="options-panel" aria-label="음료 옵션">
+          <fieldset class="option-group temperature-group" id="temperature-group">
+            <legend>온도를 선택해 주세요 <span class="required-label">필수</span></legend>
+            <div class="choice-grid">
+              <label class="choice-card">
+                <input type="radio" name="temperature" value="ice">
+                <span class="choice-card-title">Ice</span>
+                <span class="choice-card-detail">차갑게 · +0원</span>
+              </label>
+              <label class="choice-card">
+                <input type="radio" name="temperature" value="hot">
+                <span class="choice-card-title">Hot</span>
+                <span class="choice-card-detail">따뜻하게 · +0원</span>
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="option-group">
+            <legend>샷 추가</legend>
+            <label class="option-choice large-option">
+              <input id="shot-option" type="checkbox">
+              <span>샷 추가 <strong>+500원</strong></span>
+            </label>
+          </fieldset>
+          <fieldset class="option-group">
+            <legend>시럽</legend>
+            <label class="option-choice large-option">
+              <input id="syrup-option" type="checkbox">
+              <span>시럽 추가 <strong>+0원</strong></span>
+            </label>
+          </fieldset>
+        </section>
+        <div class="option-footer">
+          <div class="option-total">
+            <span>현재 금액</span>
+            <strong id="options-total">0원</strong>
+          </div>
+          <button class="button primary-action" id="add-to-cart-button" type="button" disabled>
+            담기
+          </button>
+        </div>
+      </section>
+
+      <section class="kiosk-screen cart-screen" id="cart-view" aria-labelledby="cart-title" hidden>
+        <button class="back-button" type="button" id="cart-back-button">
+          <span aria-hidden="true">←</span> 메뉴로 돌아가기
+        </button>
+        <section class="intro">
+          <p class="step-label">3 · 주문 확인</p>
+          <p class="eyebrow">YOUR ORDER</p>
+          <h1 id="cart-title">장바구니</h1>
+          <p>선택한 음료와 옵션을 확인해 주세요.</p>
+        </section>
+        <div class="cart-panel">
+          <div class="cart-list" id="cart-list" aria-live="polite"></div>
+          <div class="cart-summary">
+            <span>합계</span>
+            <strong id="cart-total">0원</strong>
+          </div>
+          <button class="button order-button" id="order-button" type="button" disabled>
+            주문하기
+          </button>
+          <p class="feedback" id="cart-feedback" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="admin-view" id="admin-view" aria-labelledby="admin-title" hidden>
+        <section class="intro">
+          <p class="eyebrow">CAFE MANAGEMENT</p>
+          <h1 id="admin-title">관리자 대시보드</h1>
+          <p>주문 현황과 메뉴별 재고를 확인합니다.</p>
+        </section>
+
+        <div class="admin-tabs" role="tablist" aria-label="관리자 정보">
+          <button class="admin-tab is-active" id="orders-tab" type="button" role="tab"
+            aria-selected="true" aria-controls="orders-panel" data-admin-tab="orders">
+            주문 현황
+          </button>
+          <button class="admin-tab" id="inventory-tab" type="button" role="tab"
+            aria-selected="false" aria-controls="inventory-panel" data-admin-tab="inventory">
+            메뉴별 재고
+          </button>
+        </div>
+        <section class="admin-panel" id="orders-panel" role="tabpanel" aria-labelledby="orders-tab">
+          <div id="orders-list" aria-live="polite"></div>
+        </section>
+        <section class="admin-panel" id="inventory-panel" role="tabpanel"
+          aria-labelledby="inventory-tab" hidden>
+          <div class="inventory-list" id="inventory-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>[학부/학과] <span aria-hidden="true">·</span> [학번] <span aria-hidden="true">·</span> [이름]</p>
+    </footer>
+  </body>
+</html>
