@@ -20,8 +20,8 @@
 
 ## 3. 링크
 
-- GitHub 저장소: `https://github.com/[계정이름]/vibe-midterm-[학번]`
-- GitHub Pages 배포: `https://[계정이름].github.io/vibe-midterm-[학번]/`
+- GitHub 저장소: `https://github.com/hyejun2007/vibe-midterm-202602243`
+- GitHub Pages 배포: `https://hyejun2007.github.io/vibe-midterm-202602243/`
 
 ## 4. 사용법
 
@@ -60,6 +60,6 @@
 
 ## 7. 제작자 정보
 
-- 학부/학과: [학부/학과]
-- 학번: [학번]
-- 이름: [이름]
+- 학부/학과: 상경학부
+- 학번: 202602243
+- 이름: 황예준
